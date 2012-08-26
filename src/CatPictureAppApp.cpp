@@ -11,10 +11,14 @@ class CatPictureAppApp : public AppBasic {
 	void mouseDown( MouseEvent event );	
 	void update();
 	void draw();
+
+private:
+	float brightness;
 };
 
 void CatPictureAppApp::setup()
 {
+	brightness = 0.0f;
 }
 
 void CatPictureAppApp::mouseDown( MouseEvent event )
@@ -23,12 +27,16 @@ void CatPictureAppApp::mouseDown( MouseEvent event )
 
 void CatPictureAppApp::update()
 {
+	brightness = brightness + 0.01f;
+	if(brightness > 1.0f){
+		brightness = 0.0f;
+	}
 }
 
 void CatPictureAppApp::draw()
 {
 	// clear out the window with black
-	gl::clear( Color( 0, 0, 0 ) ); 
+	gl::clear( Color(brightness, brightness, brightness ) ); 
 }
 
 CINDER_APP_BASIC( CatPictureAppApp, RendererGl )
