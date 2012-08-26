@@ -29,22 +29,24 @@ void CatPictureAppApp::mouseDown( MouseEvent event )
 {
 }
 
+// Changes the value of the color component 
 void CatPictureAppApp::update()
 {
-	red = red + 0.01f;
-	blue = blue - 0.01f;
-	if(red > 1.0f){
-		red = 0.0f;
-	}
+	red = red + 0.005f;
+	blue = blue - 0.005f;
 
-	if(blue < 1.0f){
+	if(red > 1.0f){
+		red = 0.0f;	
+	}
+	
+	if (blue < 0.0f){
 		blue = 1.0f;
 	}
 }
 
 void CatPictureAppApp::draw()
 {
-	// clear out the window with black
+	// Draws the screen with a different color based on the color value
 	gl::clear( Color(red, green, blue ) );
 
 }
